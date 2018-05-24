@@ -468,7 +468,7 @@ function PSDrive($computador){
      $Form = New-Object System.Windows.Forms.Form
      $form.minimizebox = $false
      $form.maximizebox = $false
-     $Form.Size = New-Object System.Drawing.Size(235, 500)
+     $Form.Size = New-Object System.Drawing.Size(670, 550)
      $Form.Text = "PSDrive"          
      $Form.StartPosition = "CenterScreen"
      
@@ -488,27 +488,34 @@ function PSDrive($computador){
           
      $outputBox = New-Object system.windows.Forms.TextBox
      $outputBox.Multiline = $true
-     $outputBox.Size = New-Object System.Drawing.Size(200, 80)
+     $outputBox.Size = New-Object System.Drawing.Size(400, 290)
      $outputBox.ReadOnly = $true
      $outputBox.ScrollBars = "Vertical"
-     $outputBox.location = new-object system.drawing.point(10, 340)
+     $outputBox.location = new-object system.drawing.point(230, 35)
      $outputBox.Font = "Lucida Sans,9"
      $Form.Controls.Add($outputBox)
      
      $Button_Cancelar = New-Object System.Windows.Forms.Button 
-     $Button_Cancelar.Location = New-Object System.Drawing.Size(10, 430) 
+     $Button_Cancelar.Location = New-Object System.Drawing.Size(10, 330) 
      $Button_Cancelar.Size = New-Object System.Drawing.Size(100, 20)      
      $button_Cancelar.text = "Cancelar"
      $Button_Cancelar.Add_Click( {$Form.Close()}) 
      $Form.Controls.Add($Button_Cancelar)
-     
+
+     $ComboBox = New-Object System.Windows.Forms.ComboBox
+     $COMBOBox.Text = "Unidade"
+     $ComboBox.Width = 62
+     $ComboBox.Height = 100
+     $ComboBox.Location = New-Object System.Drawing.Size(230, 330)
+     $Form.Controls.Add($ComboBox)
+
      $c=Invoke-command -ComputerName $computador -ScriptBlock {get-childItem -path c:\users}
      $c.name | ForEach-Object  {
                     $ListBox_usuarios.Items.add($_)
                 }
 
      $Button_Confirmar = New-Object System.Windows.Forms.Button 
-     $Button_Confirmar.Location = New-Object System.Drawing.Size(110, 430) 
+     $Button_Confirmar.Location = New-Object System.Drawing.Size(110, 330) 
      $Button_Confirmar.Size = New-Object System.Drawing.Size(100, 20)      
      $button_Confirmar.text = "Confirmar"
      $Button_Confirmar.Add_Click( {
@@ -660,12 +667,12 @@ function startmenu {
         $Button_PSDrive.forecolor = "Black"
         $Button_PSDrive.text = "PSDrive"
         $Button_PSDrive.Add_Click( {
-                if ($ListBox_pcs.SelectedIndices -ne $null){
+                #if ($ListBox_pcs.SelectedIndices -ne $null){
                     PSDrive($ListBox_pcs.SelectedItem)
-                }
-                else {
-                    ErroComputador
-                }       
+                #}
+                #else {
+                 #   ErroComputador
+                #}       
             }) 
         $Form.Controls.Add($Button_PSDrive)   
 
