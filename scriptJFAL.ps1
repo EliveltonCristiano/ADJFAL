@@ -1,5 +1,4 @@
 ﻿
-
 #ENVIA MENSAGEM VIA msg.exe PARA UMA SEÇÃO
 function EnviarMensagem($secao) {
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
@@ -558,7 +557,7 @@ function PSDrive($computador){
 
                                  
                  #$cred = Get-Credential
-                 $r =  Invoke-Command -ComputerName $computador -ScriptBlock {net use Z: /del} | Out-String 
+                 $r =  Invoke-Command -ComputerName $computador -ScriptBlock {net use u: /del} | Out-String 
                  #$r =  Invoke-Command -ComputerName $computador -ScriptBlock {Remove-PSDrive Z} | Out-String 
                  #\\file1-maceio\maceio2
                  $outputBox.Appendtext("$r")
@@ -577,7 +576,7 @@ function PSDrive($computador){
                                  
                  #$cred = Get-Credential
                  #Set-Location  FILESYSTEM::Z:
-                 $r =  Invoke-Command -ComputerName $computador -ScriptBlock {net use z: \\file1-maceio\maceio2 /user:eliveltoncss "@senha123e" /persistent:yes} | Out-String
+                 $r =  Invoke-Command -ComputerName $computador -ScriptBlock {net use u: \\file1-maceio\usuarios\Danielcc /user:eliveltoncss "@senha123e" /persistent:yes} | Out-String
                  #$r =  Invoke-Command -ComputerName $computador -ScriptBlock {new-psdrive -name Z -psprovider FileSystem -root \\file1-maceio\maceio2} | Out-String
                  #\\file1-maceio\maceio2
                  $outputBox.Appendtext("$r")
@@ -676,7 +675,7 @@ function startmenu {
                     
     
             }) 
-        $Form.Controls.Add($Button_Impressoras) 
+        ##$Form.Controls.Add($Button_Impressoras) 
 
         $Button_GPUpdate = New-Object System.Windows.Forms.Button 
         $Button_GPUpdate.Location = New-Object System.Drawing.Size(470, 110) 
@@ -727,7 +726,7 @@ function startmenu {
                  #   ErroComputador
                 #}       
             }) 
-        $Form.Controls.Add($Button_PSDrive)   
+        ##$Form.Controls.Add($Button_PSDrive)   
 
 
         $Button_Cancelar = New-Object System.Windows.Forms.Button 
